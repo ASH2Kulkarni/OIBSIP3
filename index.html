@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEMPERATURE METER</title>
+  <link rel="stylesheet" href="temp.css">
+
+
+</head>
+<body>
+  <div class="main">
+
+    <h1 class="name">TEMPOMETER</h1>
+    
+    <div class="inputUser">
+
+      <div class="degrees">
+        <label >Degrees </label><br><br>
+        <input type="number" id="inputDegree" placeholder="Enter temperature">
+      </div>
+      
+      <div class="Scale">
+        <label id="scale">Scale</label> <br><br>
+        <select  id="temperature" autocomplete="on">
+          <option value="Celcius">Celcius</option>
+          <option value="Fahrenheit">Fahrenheit</option>
+        </select>
+      </div>
+
+    </div>
+    <br>
+    <div class="convert">
+      <button onclick="convert()" id="convert">CONVERT</button>
+    </div>
+    <br>
+    <div class="answer">
+      
+      <center>
+        Result
+        <p id="result" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 700;">
+       
+         </p>
+
+      </center>
+   
+    </div>
+  </div>
+  <script>
+    
+const input = document.querySelector('#inputDegree');
+const tempType = document.querySelector('#temperature');
+const convertBtn= document.querySelector('#convert');
+const Result= document.querySelector('#result');
+
+
+convertBtn.addEventListener("click" , (e) =>{ 
+  e.preventDefault;
+  convert();
+
+})
+function convert(){
+  let inputValue = input.value;
+  if(tempType.value ==="Celcius"){
+
+    const CelciusToFahrenheit = (inputValue * (9/5))+32;
+    Result.innerHTML=`${CelciusToFahrenheit.toFixed(3)} &deg;
+    F`;
+  }else if(tempType.value==="Fahrenheit"){
+    const FahrenheitToCelcius = (inputValue - 32)*(5/9);
+    Result.innerHTML=`${FahrenheitToCelcius.toFixed(3)} &deg;
+    C`;
+  }
+}
+
+
+  </script>
+ 
+</body>
+</html>
